@@ -6,7 +6,7 @@ from settings import Settings
 
 from ship import Ship
 
-from game_functions import game_functions as gf
+import game_functions as gf
 
 def run_game(): 
     #初始化游戏并创建一个屏幕对象

@@ -11,12 +11,20 @@ def check_keydown_events(evnet,ship):
         ship.moving_left = True
 
 def check_keyup_events(event,ship):
-    if event.key == pygame.K_RIGHT
+    if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
 
-def check_events():
+def check_keyup_events(event, ship):
+    """响应松开"""
+    if event.key == pygame.K_RIGHT:
+        ship.moving_right = False
+    elif event.key == pygame.K_LEFT:
+        ship.moving_left = False
+
+
+def check_events(ship):
     """响应按键和鼠标事件"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -26,11 +34,11 @@ def check_events():
                 #向右移动飞船
                 #ship.rect.centerx += 1
                 ship.moving_right = True
-            elif evnet.key == pygame.K_LEFT:
+            elif event.key == pygame.K_LEFT:
                 ship.moving_left = True
 
-        elif event.tpye == pygame.KEYUP:
-            if event.key = pygame.K_RIGHT:
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
                 ship.moving_right = False
             elif event.key == pygame.K_LEFT:
                 ship.moving_left = False
