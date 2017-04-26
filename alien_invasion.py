@@ -8,6 +8,8 @@ from ship import Ship
 
 import game_functions as gf
 
+from pygame.sprite import Group
+
 def run_game(): 
     #初始化游戏并创建一个屏幕对象
     pygame.init()
@@ -22,6 +24,8 @@ def run_game():
     #创建一艘飞船
     #ship = Ship(screen)
     ship = Ship(ai_settings,screen)
+    #创建一个用于存储子弹的编组
+    bullets = Group()
 
     #设置背景色
     bg_color = (230,230,230)
@@ -46,6 +50,12 @@ def run_game():
         #pygame.display.flip()
 
         ship.update()
+        bullets.update()
+        #删除已消失的子弹
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+            
         gf.update_screen(ai_settings,screen,ship)
         
 run_game()
