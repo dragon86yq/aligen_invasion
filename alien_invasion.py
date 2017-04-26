@@ -37,7 +37,7 @@ def run_game():
        #     if event.type == pygame.QUIT:
        #         sys.exit()
         
-        gf.check_events(ship)
+        gf.check_events(ai_settings,screen,ship,bullets)
 
 
         # 每次循环时都重绘屏幕        
@@ -50,12 +50,15 @@ def run_game():
         #pygame.display.flip()
 
         ship.update()
-        bullets.update()
+       # bullets.update()
         #删除已消失的子弹
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-            
-        gf.update_screen(ai_settings,screen,ship)
+       # for bullet in bullets.copy():
+       #     if bullet.rect.bottom <= 0:
+            #    bullets.remove(bullet)
+       # print(len(bulltes))
+
+        gf.update_bullets(bullets)
+
+        gf.update_screen(ai_settings,screen,ship,bullets)
         
 run_game()
